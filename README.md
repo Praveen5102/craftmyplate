@@ -4,13 +4,13 @@ CraftMyPlate is a mobile app that provides a delightful user experience, from au
 
 ## Features
 
-- **Splash Screen:**An introductory screen with the app logo, setting the stage for user interaction.
+- **Splash Screen:** An introductory screen with the app logo, setting the stage for user interaction.
   
-- **Phone Aunthentication:**Users can log in using their phone number for secure and quick access.
+- **Phone Aunthentication:** Users can log in using their phone number for secure and quick access.
   
 - **OTP Verification:** A verification process using OTP (One-Time Password) for enhanced security.
   
-- **Home Screen:**The main interface where users can access content, personalized features, and various options.
+- **Home Screen:** The main interface where users can access content, personalized features, and various options.
 
 ## Screenshots
 
