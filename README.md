@@ -66,21 +66,21 @@ CraftMyPlate is a mobile app that provides a delightful user experience, from au
 
 ### Main Files
 
-- [lib/main.dart]Entry point of the application.
+- [lib/main.dart] Entry point of the application.
 
-- [lib/screens/SplashScreen.dart]Splash screen UI and logic.
+- [lib/screens/SplashScreen.dart] Splash screen UI and logic.
   
-- [lib/screens/login1.dart]Phone authentication screen.
+- [lib/screens/login1.dart] Phone authentication screen.
   
-- [lib/screens/login2.dart]OTP input and verification logic.
+- [lib/screens/login2.dart] OTP input and verification logic.
   
-- [lib/screens/HomeScreen.dart]Main screen after authentication, with personalized options.
+- [lib/screens/HomeScreen.dart] Main screen after authentication, with personalized options.
 
 ### Widget Overview
 
-- **OTP Input Boxes:** User-friendly OTP input fields with custom styling.
+- **OTP Input Boxes:**User-friendly OTP input fields with custom styling.
 
-- **Location Display and Dropdown:** Displays the user’s location with a customizable dropdown for location selection.
+- **Location Display and Dropdown:**Displays the user’s location with a customizable dropdown for location selection.
 
 - ** Rewards Button:**Button to access rewards, with an icon for enhanced UX.
 
