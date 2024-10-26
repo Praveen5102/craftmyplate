@@ -88,11 +88,11 @@ class _LoginScreen1State extends State<LoginScreen1> {
                 children: [
                   const SizedBox(height: 20),
                   AspectRatio(
-                    aspectRatio: 150 / 150,
+                    aspectRatio: 150 / 80,
                     child: Image.asset(
                       'assets/images/logo.png',
                       width: 150,
-                      height: 150,
+                      height: 80,
                       fit: BoxFit.contain,
                     ),
                   ),

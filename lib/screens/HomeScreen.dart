@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:craft_my_plate/widgets/BottomNavBar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -8,198 +9,91 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              children: [
-                // Background image
-                Positioned.fill(
-                  child: Image.asset(
-                    "assets/images/logo4.png",
-                    fit: BoxFit.cover, // Ensures the image fills the container
+            SizedBox(
+              height: 380, // Set the fixed height you need
+              child: Stack(
+                children: [
+                  // Background image
+                  Positioned.fill(
+                    child: Image.asset(
+                      "assets/images/logo7.png",
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                // Foreground container with content
-                Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Row(
-                              children: [
-                                SizedBox(height: 30),
-                                Icon(Icons.person_pin, size: 32),
-                                SizedBox(width: 8),
-                                Text(
-                                  'Hyderabad',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF503829),
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                FaIcon(FontAwesomeIcons.chevronDown, color: Color(0xFF503829)),
-                              ],
-                            ),
-                            ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: Color(0xFFF9E787),
-                                backgroundColor: Color(0xFF503829),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                              onPressed: () {},
-                              icon: FaIcon(FontAwesomeIcons.coins),
-                              label: Text('Earn Rewards'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 110),
-                      // Greeting
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Hello,',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF68420A),
-                              ),
-                            ),
-                            Text(
-                              'Hyderabad!',
-                              style: TextStyle(
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFAF7013),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Options
-                    ],
-                  ),
-                ),
-              ],
+                 ],
+              ),
             ),
-
-            // White background starts here
             Container(
               color: Colors.white,
               child: Column(
-                children: [
-                  // Banner
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Container(
-                      padding: EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          FaIcon(FontAwesomeIcons.arrowLeft, color: Colors.yellow),
-                          Text(
-                            'Starts from 10 Guests Onwards!',
-                            style: TextStyle(color: Colors.grey[700]),
-                          ),
-                          FaIcon(FontAwesomeIcons.arrowRight, color: Colors.yellow),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // Services
+                children: [ // Half of the image height (109 / 2)
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
+                        Image.asset(
+                          "assets/images/logo5.png",
+                          width: 269,
+                          height: 109,
+                          fit: BoxFit.contain, // Adjusts the image to fit the specified width/height
+                        ),
                         _buildServiceCard(
                           title: 'Bulk Food Delivery',
                           description: 'Hassle-free food for your house parties & more!',
                           orderText: 'Order before 1 day',
                           icon: FontAwesomeIcons.check,
                         ),
-                        SizedBox(height: 16),
-                        _buildServiceCard(
-                          title: 'Catering Service',
-                          description: 'Suitable for small to large gatherings',
-                          orderText: 'Order before 2 days',
-                          icon: FontAwesomeIcons.check,
-                        ),
                       ],
                     ),
                   ),
+                  buildServiceCard(),
+                  SizedBox(height: 20),
                   // Occasions
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Column(
-                      children: [
-                        Text(
-                          'What’s Your Next Occasion?',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800],
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        _buildOccasionsGrid(),
-                      ],
-                    ),
-                  ),
+                  _buildSectionHeader("What's Your Next Occasion?"),
+                  _buildOccasionsScrollView(),
                   // Platters
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Choose Your Platter',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800],
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        _buildPlatterCard(
-                          title: 'Taste of Traditions',
-                          imageUrl:
-                          'https://storage.googleapis.com/a1aa/image/e8BurKQF7B1ZEaX9ce0CvpGJCr3XcnweaCb29VPjrCfDgynOB.jpg',
-                          minMax: 'Min 10 - Max 1500',
-                          price: 'Starts at ₹299',
-                          categories: '8 Categories & 16 Items',
-                        ),
-                        SizedBox(height: 16),
-                        _buildPlatterCard(
-                          title: 'South Indian Breakfast',
-                          imageUrl:
-                          'https://storage.googleapis.com/a1aa/image/Bhp25dKO13YWLJTn4BASOa0OJBLfhNgwOVsaleUkxFR5n8pTA.jpg',
-                          minMax: 'Min 10 - Max 1500',
-                          price: 'Starts at ₹199',
-                          categories: '5 Categories & 10 Items',
-                        ),
-                      ],
+                  _buildSectionHeader('Choose Your Platter'),
+                  SizedBox(height: 20),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Bulk Food Delivery",
+                      style: TextStyle(
+                        color: Color(0xFF460F7E),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
+                  SizedBox(height: 20),
+                  _buildPlatterScrollView(),
+                  SizedBox(height: 20),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Catering Service",
+                      style: TextStyle(
+                        color: Color(0xFF460F7E),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  _buildTiffinScrollView(),
                 ],
               ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 
   Widget _buildOptionButton(String assetPath) {
     return Container(
-      width: 120,
-      height: 105,
+      width: 98,
+      height: 130,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         image: DecorationImage(
@@ -242,7 +136,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(color: Colors.yellow, borderRadius: BorderRadius.circular(8)),
+                decoration: BoxDecoration(color: Colors.yellow, shape: BoxShape.circle),
                 child: FaIcon(FontAwesomeIcons.arrowRight, color: Colors.black),
               ),
             ],
@@ -283,58 +177,129 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOccasionsGrid() {
+  Widget _buildOccasionsScrollView() {
     final occasions = [
-      {
-        'title': 'House Party',
-        'image': 'https://storage.googleapis.com/a1aa/image/t5zlhLc8OjoJChALS0kp2RTgFHR6nYsVYvps8Z3IhtMBKf0JA.jpg',
-      },
-      {
-        'title': 'Birthday',
-        'image': 'https://storage.googleapis.com/a1aa/image/4BfSRorvaORXCCvHufyP8quzrvkdhKnV9NQTg9rF5Bn4n8pTA.jpg',
-      },
-      {
-        'title': 'Pooja',
-        'image': 'https://storage.googleapis.com/a1aa/image/Pminc86kXobeKqgtJiaWfk65OReThzNQZmtf1O8iudrffJf0JA.jpg',
-      },
-      {
-        'title': 'Haldi',
-        'image': 'https://storage.googleapis.com/a1aa/image/AxaKkWd3VVJYNjfnfG1wAi61lbTfjMYQRz9vJ9cnKTc1rJfqQw.jpg',
-      },
+      'Birthday Party',
+      'Cocktail Party',
+      'engagement',
+      'Farmhouse Party',
+      'Get together',
+      'Haldi',
+      'House Party',
+      'House Warming',
+      'Kitty Party',
+      'Office Party',
+      'Pooja',
+      'wedding',
+      'Workshop',
     ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
+    return SizedBox(
+      height: 320, // Adjusted for two rows of images (2 * 144)
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: (occasions.length / 2).ceil(),
+        itemBuilder: (context, index) {
+          // Calculate start and end indexes for each column
+          final firstRowOccasion = occasions[index * 2];
+          final secondRowOccasion = index * 2 + 1 < occasions.length ? occasions[index * 2 + 1] : null;
+
+          return Column(
+            children: [
+              // First row image
+              _buildOccasionImage(firstRowOccasion),
+              SizedBox(height: 16), // Spacing between rows
+              // Second row image (if it exists)
+              if (secondRowOccasion != null) _buildOccasionImage(secondRowOccasion),
+            ],
+          );
+        },
       ),
-      itemCount: occasions.length,
-      itemBuilder: (context, index) {
-        final occasion = occasions[index];
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-              image: NetworkImage(occasion['image']!),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Center(
-            child: Text(
-              occasion['title']!,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                shadows: [Shadow(blurRadius: 5, color: Colors.black)],
+    );
+  }
+
+  Widget _buildOccasionImage(String occasion) {
+    final imagePath = 'assets/images/$occasion.png';
+
+    return Container(
+      width: 117.6,
+      height: 144,
+      margin: EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Container(
+            width: 117.6,
+            height: 30,
+            child: Center(
+              child: Text(
+                occasion,
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
-        );
-      },
+        ],
+      ),
+    );
+  }
+
+
+  Widget _buildPlatterScrollView() {
+    return SizedBox(
+      height: 290,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          _buildPlatterCard(
+            title: 'Taste of Traditions',
+            imageUrl: 'assets/images/measl2.png',
+            minMax: 'Min 10 - Max 1500',
+            price: 'Starts at ₹299',
+            categories: '8 Categories & 16 Items',
+          ),
+
+          SizedBox(width: 16),
+          _buildPlatterCard(
+            title: 'South India Breakfast',
+            imageUrl: 'assets/images/meals.png',
+            minMax: 'Min 10 - Max 1500',
+            price: 'Starts at ₹219',
+            categories: '4 Categories & 8 Items',
+          ),
+        ],
+      ),
+    );
+  }
+  Widget _buildTiffinScrollView() {
+    return SizedBox(
+      height: 290,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          _buildPlatterCard(
+            title: 'South India Breakfast',
+            imageUrl: 'assets/images/meals.png',
+            minMax: 'Min 10 - Max 1500',
+            price: 'Starts at ₹219',
+            categories: '4 Categories & 8 Items',
+          ),
+          SizedBox(width: 16),
+          _buildPlatterCard(
+            title: 'Hyderbadhi Biryani',
+            imageUrl: 'assets/images/biryani1.png',
+            minMax: 'Min 5 - Max 1000',
+            price: 'Starts at ₹299',
+            categories: '6 Categories & 12 Items',
+          ),
+        ],
+      ),
     );
   }
 
@@ -346,35 +311,217 @@ class HomeScreen extends StatelessWidget {
     required String categories,
   }) {
     return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(16),
+      width: 320,
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Color(0xFFFAE787), Color(0xFFFFD800)]),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.yellow),
+        boxShadow: [
+          BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 5, spreadRadius: 2),
+        ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
-          SizedBox(height: 8),
-          Image.network(imageUrl),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(minMax, style: TextStyle(color: Colors.grey[700])),
-                  Text(categories, style: TextStyle(color: Colors.grey[700])),
-                ],
+              Image.asset(
+                imageUrl,
+                width: double.infinity,
+                height: 148,
+                fit: BoxFit.cover,
               ),
-              Text(price, style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
+              Positioned(
+                top: 10,
+                left: 10,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    'Popular',
+                    style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(FontAwesomeIcons.users, size: 14, color: Colors.grey),
+                        SizedBox(width: 4),
+                        Text(minMax, style: TextStyle(color: Colors.grey)),
+                      ],
+                    ),
+                    Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(categories, style: TextStyle(color: Colors.purple)),
+                    TextButton(
+                      onPressed: () {
+                        // Handle "See all" action here
+                      },
+                      child: Text('See all', style: TextStyle(color: Colors.grey)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Row(
+      children: [
+        Expanded(child: Divider(color: Colors.grey, )),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+        ),
+        Expanded(child: Divider(color: Colors.grey)),
+      ],
+    );
+  }
+  Widget buildServiceCard() {
+    return Column(
+      children: [
+        Stack(
+          children: [
+            // Background image
+            Container(
+              width: 340,
+              height: 160,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.yellow.shade400),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'assets/images/logo6.png',
+                  fit: BoxFit.cover,
+                  color: Colors.black.withOpacity(0.5),
+                  colorBlendMode: BlendMode.darken,
+                ),
+              ),
+            ),
+            // Text and Button overlay
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Catering Service',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Order before 2 days',
+                          style: TextStyle(
+                            color: Color(0xFFFBC437),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Suitable for small to large \ngatherings',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.yellow.shade400, backgroundColor: Colors.black,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 6.0,
+                                horizontal: 12.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: BorderSide(color: Color(0xFFFBC437)),
+                              ),
+                            ),
+                            icon: FaIcon(FontAwesomeIcons.arrowRight, size: 12),
+                            label: Text(
+                              'See Platters',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                            onPressed: () {
+                              // Define action here
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        // Footer Text
+        Container(
+          width: 340,
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+            color: Color(0xFFFBC437),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(15),
+              bottomRight: Radius.circular(15),
+            ),
+          ),
+          child: const Text(
+            'Service & Live Cooking Available!',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

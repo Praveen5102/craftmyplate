@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^5.3.1
   fluttertoast: ^8.2.8
   pinput: ^3.0.1
+  fluent_ui: ^4.9.2
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,26 @@ flutter:
      - assets/images/logo2.png
      - assets/images/logo3.png
      - assets/images/logo4.png
+     - assets/images/logo5.png
+     - assets/images/logo6.png
+     - assets/images/logo7.png
+     - assets/images/Birthday Party.png
+     - assets/images/Cocktail Party.png
+     - assets/images/engagement.png
+     - assets/images/Farmhouse Party.png
+     - assets/images/Get together.png
+     - assets/images/Haldi.png
+     - assets/images/House Party.png
+     - assets/images/House Warming.png
+     - assets/images/Kitty Party.png
+     - assets/images/Office Party.png
+     - assets/images/Pooja.png
+     - assets/images/wedding.png
+     - assets/images/Workshop.png
+     - assets/images/biryani1.png
+     - assets/images/measl2.png
+     - assets/images/AndhraBojanalu.jpg
+     - assets/images/meals.png
 
 
   fonts:
