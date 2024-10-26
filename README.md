@@ -34,9 +34,9 @@ CraftMyPlate is a mobile app that provides a delightful user experience, from au
 
 ###  Prerequisites
 
-- **Flutter SDK:**Make sure you have Flutter installed. Check the installation here.
+- **Flutter SDK:** Make sure you have Flutter installed. Check the installation here.
 
-- **Firebase:**This app uses Firebase Authentication. Set up a Firebase project and integrate it with your app.
+- **Firebase:** This app uses Firebase Authentication. Set up a Firebase project and integrate it with your app.
 
 ## Setup
 
@@ -78,11 +78,11 @@ CraftMyPlate is a mobile app that provides a delightful user experience, from au
 
 ### Widget Overview
 
-- **OTP Input Boxes:**User-friendly OTP input fields with custom styling.
+- **OTP Input Boxes:** User-friendly OTP input fields with custom styling.
 
-- **Location Display and Dropdown:**Displays the user’s location with a customizable dropdown for location selection.
+- **Location Display and Dropdown:** Displays the user’s location with a customizable dropdown for location selection.
 
-- ** Rewards Button:**Button to access rewards, with an icon for enhanced UX.
+- ** Rewards Button:** Button to access rewards, with an icon for enhanced UX.
 
 ## Customization
 
@@ -90,11 +90,11 @@ CraftMyPlate is a mobile app that provides a delightful user experience, from au
 
 Primary colors used in the app:
 
-- **Primary Background:**[#E^D09F]-Light yellow
+- **Primary Background:** [#E^D09F]-Light yellow
 
-- **Button Color:**[#503829]-Dark brown for primary buttons
-
-- **Text and Icons:**Various shades used for a warm, friendly look.
+- **Button Color:** [#503829]-Dark brown for primary buttons
+ 
+- **Text and Icons:** Various shades used for a warm, friendly look.
 
 ### Text and Icons
 
